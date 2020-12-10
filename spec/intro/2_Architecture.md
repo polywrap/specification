@@ -1,6 +1,7 @@
 # Architecture overview
+// TODO: Draw image here
 
-schema, schema binding, generated code in WASM
 
-
+## Components
+// links to each component
  
