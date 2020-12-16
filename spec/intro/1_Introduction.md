@@ -11,7 +11,7 @@ For the visual learners, here is the [video presentation](http://video.web3api.e
 
 At core of Web3API is a WASM runtime that enables interactions with popular P2P networks such as
 IPFS, Ethereum, Subgraph and other similar Web3 apps and protocols.
-These WASM modules are paired with a [subgraph](https://thegraph.com/) and together they create a single GraphQL schema called Web3API that defines the entirety of a WEB3API package.
+These WASM modules are paired with a [subgraph](https://thegraph.com/) and together they create a single GraphQL schema called Web3API that defines the entirety of a Web3API package.
 On the client (dapp) side Web3API client, together with some GraphQL client, is used to interact with the Web3API package. 
 
 ## Hosting WEB3API packages

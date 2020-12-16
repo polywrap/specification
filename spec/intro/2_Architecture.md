@@ -3,6 +3,9 @@ The following schema represents the overall architecture of the Web3API and how 
 
 ![Architecture](../assets/Architecture.png)
 
+// We have an initial architecture diagram here: https://www.figma.com/file/NbpargAAWdzNDhvQspv4kF/Web3API---All-Docs?node-id=5%3A70
+// I added you as an editor if you'd like to duplicate and modify. Also doing this in Draw.io may be best (but less flashy :P)
+
 For example, if a (d)app is trying to use a Web3API package then Web3API client should be installed and initialized. (D)app is querying packages using their ENS URI i.e. `w3://ens/uniswap.eth`.
 Upon Web3API client initialization, packages are also loaded. This is done in the following order:
 1. ENS URI is resolved to IPFS hash using existing Web3API's ENS plugin
@@ -19,6 +22,6 @@ Main components of the system can be divided into:
 - [Web3API Client](../components/Web3API_Client.md) - contains exposed interfaces and methods that (d)apps can use 
 - [Web3API Packages](../components/Web3API_Package.md) - contain API for interaction with decentralized protocols and apps
 - [Web3API Plugins](../components/Web3API_Plugins.md) - core plugins that contain host methods that packages can use i.e. for Ethereum interactions
-- [Web3API WASM runtime](../components/WASM_runtime.md) - 
+- [W3 WASM protocol](../components/WASM_protocol.md) - contains all host imports required for querying and invoking functions
 
  
