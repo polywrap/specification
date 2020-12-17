@@ -6,4 +6,6 @@ Currently, Web3API client is available in JavaScript language.
 
 // TODO: Explain client, which interfaces are available and which should be implemented
 
+## Query handler
+
 ## URI resolution algorithm  

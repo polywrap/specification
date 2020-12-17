@@ -19,3 +19,4 @@ A Web3API package is consisted of:
 ### Importing local and external schemas
 
 ## Web3API (WASM) modules 
+

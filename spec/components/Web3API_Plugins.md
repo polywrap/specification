@@ -5,7 +5,7 @@ Plugins allow to import JavaScript based modules into Web3API packages.
 
 When creating a new Web3API client instance, user can specify [URI redirects](Web3API_Client.md#uri-resolution-algorithm) to a plugin for any given URI.
 
-These are currently existing plugins:
+These are the currently existing plugins:
 
 - ENS
 - Ethereum

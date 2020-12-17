@@ -3,18 +3,18 @@ The following schema represents the overall architecture of the Web3API and how 
 
 ![Architecture](../assets/Architecture.png)
 
-// We have an initial architecture diagram here: https://www.figma.com/file/NbpargAAWdzNDhvQspv4kF/Web3API---All-Docs?node-id=5%3A70
-// I added you as an editor if you'd like to duplicate and modify. Also doing this in Draw.io may be best (but less flashy :P)
+First, an application (dapp) should have Web3API client installed and initialized to be able to use a Web3API package.
 
-For example, if a (d)app is trying to use a Web3API package then Web3API client should be installed and initialized. (D)app is querying packages using their ENS URI i.e. `w3://ens/uniswap.eth`.
-Upon Web3API client initialization, packages are also loaded. This is done in the following order:
-1. ENS URI is resolved to IPFS hash using existing Web3API's ENS plugin
-2. Package files are downloaded from IPFS
-3. Package is the one that defines it's schema (mutations and queries) and creates a subgraph. Packages interact with decentralized protocols such as Ethereum using W3 helper methods.
-4. As packages (WASM code) are sandboxed environements, W3 WASM runtime module contains all host imports (helper methods for queries).
-Using Web3API package schema, W3 helper methods and Web3API's schema binding the AssemblyScript (WASM) code is generated.
+1. Application is querying packages using a URI. This can be ENS URI i.e. `w3://ens/uniswap.eth` or IPFS hash.
+All calls (both mutations and queries) to the package are done through created GraphQL API.
+2. URI is resolved and package files are downloaded from API package location such as IPFS. Package is the one that defines it's schema (mutations and queries) and creates a subgraph.
+3. Using query handler, queries to a package, between packages and plugins are invoked and resolved.  
+With the help of plugins, packages interact with decentralized protocols such as Ethereum that implement required host methods.
+The packages (WASM code) are sandboxed environments so W3 WASM module must contain all host imports including W3 helper methods for queries.
+4. W3 WASM module contains package logic and is responsible for allowing the host to call query methods using W3 helper methods.
+It's possible that WASM may invoke another query which is handled by the query handler again. 
+Also, this part includes wrapping all the query methods and serializing data types to allow this communication.
 
-All calls (both mutations and queries) to the package are done through GraphQL API.
 
 ## Components
 
