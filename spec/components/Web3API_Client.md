@@ -1,28 +1,32 @@
 # Web3API Client
 
-Web3API client is intended for application developers that can use this as a single library in their (d)apps to interact with various decentralized services using Web3API's packages.
+Web3API client is intended for application developers that can use the client as a single library in their (d)apps to interact with various decentralized services using Web3API's packages.
 
 Currently, Web3API client is available in the following languages:
- - JavaScript
+ - JavaScript (TypeScript)
 
 ## Client interface
+The following snippet contains the interface that client should implement.
 
 ```
-class Web3APIClient {
+interface Web3APIClient {
   redirects(): UriRedirect[];
   query(options: QueryApiOptions): QueryApiResult;
 }
 
 type UriRedirect {
- // Redirect from this URI or set of URIs specified by the regex.
+ // Redirect from this URI or set of URIs specified by the regex
  from: Uri | RegExp;
  // Destination URI or plugin that will handle invocations
  to: Uri | (() => Plugin)
 }
 
 type QueryApiOptions {
+  // Target URI that is being queried
   uri: Uri;
+  // GraphQL query
   query: string | QueryDocument;
+  // Optional variables that are part of the GraphQL query
   variables?: Record<string, any>;
 }
 
@@ -66,14 +70,14 @@ Additionally, user can define own redirects i.e.
 #### `query` function
 Query function receives `options` required for an API query containing:
  - `query` - GraphQL query (AST representation)
- - `variables`
- - `uri` - server uri that should resolve the query.
+ - `variables` - (optional) key value records included in query
+ - `uri` - server uri that should resolve the query
 
 It is responsible for:
  - converting the query string into a query document
  - parsing the query by calling parse-query algorithm
  - processing API invocations on loaded Web3APIs
- - returning from API result `data` and `errors`.
+ - returning from API result `data` and `errors`
 
 #### `redirects` function
 
@@ -81,9 +85,9 @@ Returns URI redirects array set upon initialization.
 
 ## URI resolution algorithm
 
-A URI redirect is a translation from a given URI pattern (string or regex) to a destination URI (string or Plugin).
+A URI redirect is a translation from a given URI pattern (string or regex) to a destination URI (string or plugin).
 Therefore, it can redirect from one URI, or a set of URIs, to a new URI or a plugin. 
-Redirects enable users to provide additional domain resolvers, override existing or have a code in native language that needs to be used as a Web3API as a plugin.  
+Redirects enable users to provide additional domain resolvers, override existing or have a code in native language that needs to be used as a part of Web3API as a plugin.  
 
 Included default core plugin redirects are:
  - IPFS with uri `"w3://ens/ipfs.web3api.eth"`
@@ -125,5 +129,29 @@ function resolveUri(
   }
 
   throw Error("No Web3API found at URI");
+}
+
+// A Web3API URI
+/**
+  * Breaking down the various parts of the URI, as it applies
+  * to [the URI standard](https://tools.ietf.org/html/rfc3986#section-3):
+  * **w3://** - URI Scheme: differentiates Web3API URIs.
+  * **ipfs/** - URI Authority: allows the Web3API URI resolution algorithm to determine an authoritative URI resolver.
+  * **sub.domain.eth** - URI Path: tells the Authority where the API resides.
+*/
+interface Uri {
+    authority(): string;
+    path(): string;
+    uri(): stirng;
+    isUri(value: object): boolean;
+    isValidUri(uri: string, parsed?: UriConfig): boolean;
+    parseUri(uri: string): UriConfig;
+}
+
+// URI configuration
+type UriConfig {
+  authority: string;
+  path: string;
+  uri: string;
 }
 ```
