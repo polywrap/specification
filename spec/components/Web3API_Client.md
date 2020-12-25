@@ -81,4 +81,50 @@ Returns URI redirects array set upon initialization.
 
 ## URI resolution algorithm
 
-URI redirect can redirect from one URI, or a set of URIs, to a new URI or a plugin  
+A URI redirect is a translation from a given URI pattern (string or regex) to a destination URI (string or Plugin).
+Therefore, it can redirect from one URI, or a set of URIs, to a new URI or a plugin. 
+Redirects enable users to provide additional domain resolvers, override existing or have a code in native language that needs to be used as a Web3API as a plugin.  
+
+Included default core plugin redirects are:
+ - IPFS with uri `"w3://ens/ipfs.web3api.eth"`
+ - ENS with uri`"w3://ens/ens.web3api.eth"`
+ - Ethereum with uri `"w3://ens/ethereum.web3api.eth"`
+ 
+```
+function resolveUri(
+  uri: Uri,
+  client: Client,
+  createPluginApi: (uri: Uri, plugin: () => Plugin) => Api
+  createApi: (uri: Uri, manifest: Manifest, apiResolver: Uri) => Api
+): Api {
+  // 1. Resolve final URI first
+  let resolvedUri;
+  for (const redirect of redirects) {
+     // query interfaces to see if they accept the URI
+     const resolvedTo = resolveUriOrPlugin(redirect.from);
+     if (isUri(redirect.from)) {
+       // recursively track redirects until final URI is reached
+       resolvedUri = trackUriRedirect(redirect);
+    } else {
+        // plugin has been resolved
+        return createPluginApi(uri, resolvedUri);
+    }
+  }
+
+  // 2. Resolve the Web3API package
+  for (uriResolver in UriResolverImplementations) {
+    if (uriResolver.isSupported(resolvedUri)) {
+        let result = implementation.resolve(resolvedUri);
+        if (isUri(result)) {
+            // result is another URI that needs resolving
+            resolvedUri = trackUriRedirect(result);
+        }
+        const data = uriResolver.resolveUriPath(resolvedUri);
+        return createApi(resolvedUri, data.manifest, uriResolver);
+    }
+  }
+
+  throw Error("No Web3API found at URI");
+}
+```
+ 
