@@ -52,7 +52,7 @@ Client is initialized using `Web3APIClient` class that should support receiving:
 This in an unbounded array containing `UriRedirect` objects.
 Redirects are used for resolving Web3API URIs to decentralized protocols and their nodes.
  
-Upon initizalition it is filled by default redirects:
+Upon initizalition it is filled with default redirects:
  - IPFS - required for downloading Web3API packages
  - Ethereum - required for smart contract interactions
  - ENS - required for resolving domain to IPFS hashes
