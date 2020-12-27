@@ -94,7 +94,33 @@ Included default core plugin redirects are:
  - ENS with uri`"w3://ens/ens.web3api.eth"`
  - Ethereum with uri `"w3://ens/ethereum.web3api.eth"`
  
+The following URI resolution logic could look like this:
+
 ```
+// A Web3API URI
+/**
+  * Breaking down the various parts of the URI, as it applies
+  * to [the URI standard](https://tools.ietf.org/html/rfc3986#section-3):
+  * **w3://** - URI Scheme: differentiates Web3API URIs.
+  * **ipfs/** - URI Authority: allows the Web3API URI resolution algorithm to determine an authoritative URI resolver.
+  * **sub.domain.eth** - URI Path: tells the Authority where the API resides.
+*/
+interface Uri {
+    authority(): string;
+    path(): string;
+    uri(): stirng;
+    isUri(value: object): boolean;
+    isValidUri(uri: string, parsed?: UriConfig): boolean;
+    parseUri(uri: string): UriConfig;
+}
+
+// URI configuration
+type UriConfig {
+  authority: string;
+  path: string;
+  uri: string;
+}
+
 function resolveUri(
   uri: Uri,
   client: Client,
@@ -129,29 +155,5 @@ function resolveUri(
   }
 
   throw Error("No Web3API found at URI");
-}
-
-// A Web3API URI
-/**
-  * Breaking down the various parts of the URI, as it applies
-  * to [the URI standard](https://tools.ietf.org/html/rfc3986#section-3):
-  * **w3://** - URI Scheme: differentiates Web3API URIs.
-  * **ipfs/** - URI Authority: allows the Web3API URI resolution algorithm to determine an authoritative URI resolver.
-  * **sub.domain.eth** - URI Path: tells the Authority where the API resides.
-*/
-interface Uri {
-    authority(): string;
-    path(): string;
-    uri(): stirng;
-    isUri(value: object): boolean;
-    isValidUri(uri: string, parsed?: UriConfig): boolean;
-    parseUri(uri: string): UriConfig;
-}
-
-// URI configuration
-type UriConfig {
-  authority: string;
-  path: string;
-  uri: string;
 }
 ```
