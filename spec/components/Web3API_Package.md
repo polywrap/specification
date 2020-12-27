@@ -12,6 +12,34 @@ A Web3API package is consisted of:
   * read operations (`query.wasm`)
 - Historical data (Graph's subgraph) 
 
+### Package structure
+
+Structure of a package source should be:
+```
+.
++-- mutation
+|   +-- index.ts
+|   +-- schema.graphql
++-- query
+|   +-- index.ts
+    +-- schema.graphql
++-- subgraph
+|   +-- index.ts
+|   +-- schema.graphql
++-- web3api.yaml
+```
+
+When built, structure of the package (when contract and subgraph are used) should be:
+```
+.
++-- subgraph
+|   /* Graph CLI's WASM and ABI output */
++-- mutation.wasm
++-- query.wasm
++-- schema.graphql
++-- web3api.yaml
+```
+
 ## Web3API manifest schema
 
 Manifest defines the structure of the Web3API package so that the [client]() can load its content for a given user query.
@@ -40,7 +68,15 @@ Manifest is validated at run-time when package is downloaded to ensure the struc
 If manifest format is not at the latest format version, manifest is upgraded to the latest format.
 
 ## Web3API schema
+GraphQL schema
 
 ### Importing local and external schemas
 
 ## Web3API (WASM) modules 
+
+Modules are written in [AssemblyScript](https://www.assemblyscript.org).
+WASM modules are compiled by protocol developer based on package's written AssemblyScript source.
+Web3API WASM modules can be:
+* `mutation` - can perform write operations (but also read operations if needed) on package
+* `query`  - can only perform read operations on package
+
