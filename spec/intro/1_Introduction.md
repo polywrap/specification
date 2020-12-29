@@ -12,7 +12,9 @@ Querying these Web3APIs is done through a familiar GraphQL interface, making the
 
 The Web3API Client resolves the Web3API package hosted at `api.protocol.eth`, downloads it at run-time if not present, and executes the app's queries on the WASM modules.
 
-## What's The Impact  
+See [the Architecture section](./2_Architecture.md) for a more thorough deep-dive.
+
+## The Impact  
 
 As a result, Web3API has the following impacts on the Web3 space:  
 * **Streamlined Integration** - Query any Web3API on-the-fly, simply provide a URI.
