@@ -8,7 +8,7 @@
 
 Web3API accomplishes this through a WASM standard & developer toolchain that streamlines Web3 protocol integrations into applications. All of the logic that used to be bundled into JavaScript SDKs (among other languages), is now within light-weight, secure, and portable WASM modules.
 
-Querying these Web3APIs is done through a familiar GraphQL interface, making the app developer experience almost identical to a Web2 service. Instead of sending GraphQL queries to a centralized endpoing like `api.service.com`, app's instead query a "decentralized endpoint" like `api.protocol.eth`.
+Querying these Web3APIs is done through a familiar GraphQL interface, making the app developer experience almost identical to a Web2 service. Instead of sending GraphQL queries to a centralized endpoint like `api.service.com`, app's instead query a "decentralized endpoint" like `api.protocol.eth`.
 
 The Web3API Client resolves the Web3API package hosted at `api.protocol.eth`, downloads it at run-time if not present, and executes the app's queries on the WASM modules.
 
