@@ -20,6 +20,6 @@ As a result, Web3API has the following impacts on the Web3 space:
 * **Streamlined Integration** - Query any Web3API on-the-fly, simply provide a URI.
 * **Simple Interface** - With GraphQL, Web3APIs are as easy to use as Web2 APIs.
 * **Multi-Platform** - Use Web3 protocols in any programming language using a Web3API Client.
-* **Automatic Upgrades** - Resolving packages at run-time allows for (opt-in) automatic upgrades for app developers.
+* **Automatic Upgrades** - Resolving packages at run-time allows for automatic upgrades for app developers (opt-in).
 * **Limitless Composability** - Since Web3APIs aren't bundled, composability has no limitations.
 * **Extendable Protocols** - Web3APIs can query eachother and define standard interfaces, enabling fully extendable protocols.
