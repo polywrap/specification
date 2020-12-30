@@ -6,7 +6,7 @@ Web3API's high-level architecture, as it pertains to Web3API-enabled application
 ## Components
 
 - [Web3API Client](../components/Web3API_Client.md) - Execution Environment  
-- [Web3API URI](../components/Web3API_URI.md) - Univeral Identifier  
+- [Web3API URI](../components/Web3API_URI.md) - Universal Identifier  
 - [Web3API Package](../components/Web3API_Package.md) - Descriptive & Executable Resources
 - [Web3API Plugins](../components/Web3API_Plugins.md) - Non-WASM Based Web3APIs
 - [Web3API WASM Protocol](../components/Web3API_WASM_Protocol.md) - { Client <> WASM Module } Communication Protocol
