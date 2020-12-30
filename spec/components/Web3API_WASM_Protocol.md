@@ -12,8 +12,7 @@ It produces a generated code which is used to handle a number of things for the 
 This common data format enables representing data types correctly within both areas.
 
 All **user (package) methods** are wrapped (new functions are generated) with arguments deserialization and serialization of the return data.
-Those wrapped functions are added to the w3's `invokes` map that keeps track of all invokable functions and their implementations.
-This map of function pointers is initialized in the `_w3_init` function. 
+This map of function pointers is created on [module initialization](#module-initialization). 
 
 **Objects** can be passed as arguments to functions. For those objects new map is created that contains all object's properties with
 additional methods for object serialization and deserialization.
@@ -21,7 +20,7 @@ There are two cases that are handled:
 * generating *imported* query and object types
 * generating *user* query and object types
 
-<!-- Provide example or even better, drawing -->
+// TODO: Provide example or even better, drawing 
 
 ## Naming conventions
 
@@ -33,11 +32,46 @@ All hosts imports are prefixed with two underscores (`__`) i.e. `__w3_invoke_arg
 All exported methods from WASM modules are prefixed with one underscore (`_`) i.e. `_w3_invoke`.
 
 ## Module initialization
-<!-- https://github.com/Web3-API/prototype/blob/prealpha-dev/packages/schema/bind/src/__tests__/cases/sanity/output/wasm-as/index.ts -->
 
+WASM module can be initialized in the client by calling the exported `_w3_init` method that each module exposes.
+This method enables the usage of wrapped functions from the module.
+
+```js
+export function _w3_init(): void {
+  w3_add_invoke("queryMethod", queryMethodWrapped);
+}
+
+```
+## Querying Web3APIs from module
+To enable instant usage of WASM module (package) functions, serialization and deseralization of the function data is already built in for each.
+This is done by wrapping each function with custom serialization.
+Those wrapped functions are added to the w3's `invokes` map that keeps track of all invokable functions and their implementations.
+
+When WASM routine invocation is performed from the host the following steps are taken:
+1. Function name and arguments are deserialized
+2. Function is retrieved from the implementation mapping and called
+3. Result or error is serialized and returned
+
+Invoke function interface:
+```
+_w3_invoke(name_size: usize, args_size: usize): bool;
+```
 
 ## Methods imported from host
-<!-- invoke a module's method from host (https://github.com/Web3-API/prototype/blob/issue-28/packages/wasm/as/assembly/w3/invoke.ts) & (https://github.com/Web3-API/prototype/blob/issue-28/packages/schema/bind/src/__tests__/cases/sanity/output/wasm-as/index.ts) -->
+TBD
+```
+// Query API
+export declare function __w3_query(
+  uri_ptr: i32, uri_len: usize,
+  query_ptr: i32, query_len: usize,
+  args_ptr: i32, args_len: usize
+): bool;
 
-## Querying Web3APIs from module
-<!-- query Web3APIs from module (https://github.com/Web3-API/prototype/blob/issue-28/packages/wasm/as/assembly/w3/query.ts) -->
+// Query Result
+export declare function __w3_query_result_len(): usize;
+export declare function __w3_query_result(ptr: i32): void;
+
+// Query Error
+export declare function __w3_query_error_len(): usize;
+export declare function __w3_query_error(ptr: i32): void;
+```
