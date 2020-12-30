@@ -20,7 +20,8 @@ There are two cases that are handled:
 * generating *imported* query and object types
 * generating *user* query and object types
 
-// TODO: Provide example or even better, drawing 
+The following drawing demonstrates the flow and structure of a query serialization use case.
+![Query_serialization](../assets/Query_serialization.png)
 
 ## Naming conventions
 
