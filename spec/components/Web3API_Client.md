@@ -85,6 +85,11 @@ Returns URI redirects array set upon initialization.
 
 ## URI resolution algorithm
 
+TODO: give an example
+For example, in the common scenario (ENS + IPFS), the following high-level steps will be taken:
+1. Find a uri-resolver that supports the `ens` authority.
+2. 
+
 A URI redirect is a translation from a given URI pattern (string or regex) to a destination URI (string or plugin).
 Therefore, it can redirect from one URI, or a set of URIs, to a new URI or a plugin. 
 Redirects enable users to provide additional domain resolvers, override existing or have a code in native language that needs to be used as a part of Web3API as a plugin.  
