@@ -1,33 +1,48 @@
-# Architecture overview
-The following schema represents the overall architecture of the Web3API and how it runs inside the user application.
+# Architecture Overview
+Web3API's high-level architecture, as it pertains to Web3API-enabled applications, is as follows:
 
 ![Architecture](../assets/Architecture.png)
 
-First, an application (dapp) should have Web3API client installed and initialized to be able to use a Web3API package.
-Upon initialization, there are default plugins and URI redirects provided, however users can override that or provide additional redirect rules.
-More on this can be found in [Web3API Client](../components/Web3API_Client.md).
-
-1. Application is querying packages using a URI. This can be any type of URI but most for the project most common is ENS URI i.e. `w3://ens/uniswap.eth` or IPFS hash.
-All calls (both mutations and queries) to the package are done through a created GraphQL API found in a Web3API package.
-
-2. URI is resolved based on Web3API's [resolve-uri algorithm](../components/Web3API_Client.md#). In case it has recognized that URI is external, then package files are downloaded from decentralized storage such as IPFS.
-A package is the one that defines it's schema (mutations and queries) and creates a subgraph for data indexing.
-
-3. When API is retrieved, the query is being parsed using `parse-query algorithm` to understand what's being invoked.
-This includes validating query, parsing and recognizing the module (query or mutation), method and its input arguments, variable values and requested results.
-
-4. Depending on the module parsed, WASM (package) or plugin API is invoked. Plugins are part of the Web3API library while WASM modules run on separate threads that don't load app's main execution and can be paused when needed.
-WASM may invoke another (sub) query which takes the execution recursively to step 2. 
-
-5. Executed functions return the result back to the invoke function that returns query result which includes retrieved data or errors.  
-
-
 ## Components
 
-Main components of the system can be divided into:
-- [Web3API Client](../components/Web3API_Client.md) - contains exposed interfaces and methods that (d)apps can use 
-- [Web3API Packages](../components/Web3API_Package.md) - contain API for interaction with decentralized protocols and apps
-- [Web3API Plugins](../components/Web3API_Plugins.md) - core plugins that contain host methods that packages can use i.e. for Ethereum interactions
-- [W3 WASM protocol](../components/WASM_protocol.md) - contains all host imports required for querying and invoking functions
+- [Web3API Client](../components/Web3API_Client.md) - Execution Environment  
+- [Web3API URI](../components/Web3API_URI.md) - Univeral Identifier  
+- [Web3API Package](../components/Web3API_Package.md) - Descriptive & Executable Resources
+- [Web3API Plugins](../components/Web3API_Plugins.md) - Non-WASM Based Web3APIs
+- [Web3API WASM Protocol](../components/Web3API_WASM_Protocol.md) - { Client <> WASM Module } Communication Protocol
 
- 
+## Step-By-Step Walkthrough
+
+### **0: Initialize**  
+Firstly, applications must have a [Web3API Client](../components/Web3API_Client.md) bundled within their applications. When creating a Web3API Client instance, you may [provide additional URI redirects and plugins](TODO). Web3API Client's should provide the recommended [default redirects and plugins](TODO), enabling out of the box usability.  
+
+### **1: Query an API**  
+Applications can query an API by specifying what API to query using a [Web3API URI](../components/Web3API_URI.md), along with a GraphQL query.
+
+URIs can be of any type, as long as there exists a compatible `uri-resolver`. The most common URI types are ENS domains (`w3://ens/domain.eth`) and IPFS hashes (`w3://ipfs/QmHASH`).  
+
+GraphQL is the default query language of Web3API clients. Other formats can be supported, such as a simple web request format (ex: `w3://ens/api.eth/mutation/method&arg=5`).
+
+Details on the client's query interface can be found [here](TODO).
+
+### **2: Fetch API at URI**  
+
+[Web3API URIs](../components/Web3API_URI.md) are resolved based on the [Web3API Client](../components/Web3API_Client.md)'s [resolve-uri algorithm](../components/Web3API_Client.md#algorithms-resolve-uri).  
+
+In cases where the URI is being redirected to a [plugin](../components/Web3API_Plugins.md), a new plugin instance is instantiated.  
+
+Otherwise, a [URI resolver](TODO) must be found for the provided [URI authority](TODO). This URI resolver is then used to fetch either another URI, or the [Web3API Package's manifest](TODO). Upon receiving the manifest, we now know that the current URI resolver also implements the [API resolver]() standard interface. Using the API resolver, we are able to fetch the API's schema and WASM modules. We now have enough to instantiate the WASM Web3API instance.  
+
+For example, an ENS domain may resolve to an IPFS hash, which then resolves to a Web3API Package's manifest. For a detailed step by step breakdown of how this works, see the [resolve-uri algorithm specification]((../components/Web3API_Client.md#algorithms-resolve-uri)).  
+
+### **3: Parse Query & Build Invocations**  
+
+With the API's URI resolved, we now must parse the query provided by the user. This is done using the [parse-query algorithm](../components/Web3API_Client.md#algorithms-parse-query). The algorithm outputs one or more [invocation configurations](TODO), which details what: module, method, input arguments, and requested results will be called by the client.  
+
+### **4: Perform Invocations on API Modules**  
+
+Each of the query's invocations are then performed on the API in question. Within the invocation, one or more sub-queries may be performed on other Web3APIs.  
+
+### **5: Get Query Result**  
+
+The aggregate result of all invocations will then be returned back to the application, including any errors encountered.  

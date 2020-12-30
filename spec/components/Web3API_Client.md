@@ -9,3 +9,8 @@ Currently, Web3API client is available in JavaScript language.
 ## Query handler
 
 ## URI resolution algorithm  
+
+TODO: give an example
+For example, in the common scenario (ENS + IPFS), the following high-level steps will be taken:
+1. Find a uri-resolver that supports the `ens` authority.
+2. 
