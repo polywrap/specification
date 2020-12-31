@@ -1,73 +1,41 @@
-# Web3API package
+# Web3API Package
 
-A package enables connection and interaction with a decentralized service or app (i.e. Uniswap).
-Packages should be created by protocol developers. 
+Web3API packages contain everything needed to execute API invocations on-the-fly. This includes the API's:
 
-A Web3API package is consisted of: 
+- Manifest: `web3api.yaml`
+- Schema: `schema.graphql`
+- WASM Modules:
+  * `mutation.wasm` - Write Operations  
+  * `query.wasm` - Read Operations  
 
-- Web3API Manifest file (`web3api.yaml`) 
-- Web3API API schema (`schema.graphql`)
-- Web3API (WASM) modules
-  * write operations (`mutation.wasm`)
-  * read operations (`query.wasm`)
-- Historical data (Graph's subgraph) 
+## Web3API Manifest
+The manifest YAML file defines the structure of the package. It acts as a central directory for all other contents within the package, allowing readers, such as the [Web3API Client](TODO), to easily fetch different pieces of the API such as its schema or WASM modules.
 
-### Package structure
+### Manifest Schema
 
-The structure of a package source should be:
-```
-.
-+-- mutation
-|   +-- index.ts
-|   +-- schema.graphql
-+-- query
-|   +-- index.ts
-    +-- schema.graphql
-+-- subgraph
-|   +-- index.ts
-|   +-- schema.graphql
-+-- web3api.yaml
-```
+The latest manifest schema can be found here: [TODO](link-to-latest-schema)
 
-When built, the structure of the package (when smart contract and subgraph are used) should be:
-```
-.
-+-- subgraph
-|   /* Graph CLI's WASM and ABI output */
-+-- mutation.wasm
-+-- query.wasm
-+-- schema.graphql
-+-- web3api.yaml
-```
+### Manifest Formats
 
-## Web3API manifest schema
-
-Manifest defines the structure of the Web3API package so that the [client]() can load its content for a given user query.
-Manifest YAML file is created by a protocol developer at package's build time.
-
-### Manifest schema versioning
-
-Versioning is supported using [JSON schema](https://json-schema.org/) for the formats.
-Version in each manifest file is marked as `format` i.e.:
-
+New formats of the manifest schema can be introduced as new features are added to the Web3API standard. Manifest files self-define what format of the schema they're using using through the `format` property, i.e.:
 `format: 0.0.1-alpha.1`
 
-The latest format can be found in [Web3API repository](https://github.com/Web3-API/prototype/tree/master/packages/manifest-schema/formats).
+### Manifest Migrations
 
-Version migrations are supported through defined migrators, meaning that previous manifest versions are accepted and upgraded.
+Older manifest formats can still remain compatible with newer Web3API clients through [manifest migrations](todo). Manifest migrations are performed at run-time by the client.
 
-### Manifest schema validation
+### Manifest Validation
 
-Manifest is validated at run-time when a package is downloaded to ensure the structure is according to the required format. This includes handling a few cases:
-* when a non-accepted field is added to the manifest,
-* when the type of the field is unknown,
-* when a required field is not sent,
-* when version string is not correct,
-* when file string is not an existing file.
+The manifest is validated at run-time when a package is downloaded to ensure the structure is according to the required format. This includes handling a few cases:
+* unknown property,
+* malformed property value,
+* missing required properties
 
-If the manifest format is not at the latest format version, manifest is upgraded to the latest format.
+Individual property types can have their own sanitization logic, such as:
+* format strings
+* file paths
 
-## Web3API schema
+## Web3API Schema
 Web3API schema is basically a GraphQL schema composed with package's functions.
 It is extended with custom imports and custom scalar types for WASM serialization (uint types).
 During the package build time schemas are generated to GraphQL files using predefined templates and resolving imports.  
@@ -84,7 +52,7 @@ Schema lifecycle happens through several Web3API core parts:
   * responsible for generating code in WASM language
   * creates wrapped methods with arguments serialization and deserialization
   * creates AssemblyScript files for all types with serialization and write functions
- 
+
 <!-- Question: add drawing here of the lifecycle? -->
 <!-- Question: should TypeInfo be defined/explained or only linked to repo?  -->
 
