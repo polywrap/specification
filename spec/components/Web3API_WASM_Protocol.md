@@ -23,15 +23,6 @@ There are two cases that are handled:
 The following drawing demonstrates the flow and structure of a query serialization use case.
 ![Query_serialization](../assets/Query_serialization.png)
 
-## Naming conventions
-
-There are several naming conventions used in Web3API development. Those are:
-* #### Host import
-All hosts imports are prefixed with two underscores (`__`) i.e. `__w3_invoke_args`.
-
-* #### Module export
-All exported methods from WASM modules are prefixed with one underscore (`_`) i.e. `_w3_invoke`.
-
 ## Module initialization
 
 WASM module can be initialized in the client by calling the exported `_w3_init` method that each module exposes.
@@ -59,7 +50,10 @@ _w3_invoke(name_size: usize, args_size: usize): bool;
 ```
 
 ## Methods imported from host
-TBD
+All hosts imports are prefixed with two underscores (`__`) i.e. `__w3_invoke_args`.
+There are a few method implementations that should be passed from host.
+Their [WASI](https://wasi.dev/) interfaces can be found [here](TODO).
+
 ```
 // Query API
 export declare function __w3_query(
@@ -76,3 +70,8 @@ export declare function __w3_query_result(ptr: i32): void;
 export declare function __w3_query_error_len(): usize;
 export declare function __w3_query_error(ptr: i32): void;
 ```
+
+## Exported methods from WASM modules
+All exported methods from WASM modules are prefixed with one underscore (`_`) i.e. `_w3_invoke`.
+
+Their [WASI](https://wasi.dev/) interfaces can be found [here](TODO).
