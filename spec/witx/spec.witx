@@ -1,0 +1,57 @@
+(module $w3
+  ;;; Init w3
+  (@interface func (export "_w3_init"))
+
+  ;;; Invoke call
+  (@interface func (export "_w3_invoke")
+    (param $name_size u64)
+    (param $args_size u32)
+  )
+
+  ;;; Get Invoke Arguments
+  (@interface func (export "__w3_invoke_args")
+    (param $name_ptr s32)
+    (param $args_ptr s32)
+  )
+
+  ;;; Set Invoke Arguments
+  (@interface func (export "__w3_invoke_result")
+    (param $ptr s32)
+    (param $len u64)
+  )
+
+  ;;; Set Invoke Error
+  (@interface func (export "__w3_invoke_error")
+    (param $ptr s32)
+    (param $len u64)
+  )
+
+  ;;; Query API
+  (@interface func (export "__w3_query")
+    (param $uri_ptr s32)
+    (param $uri_len u64)
+    (param $query_ptr s32)
+    (param $query_len u64)
+    (param $args_ptr s32)
+    (param $args_len u64)
+    (result $res s8)
+  )
+
+  ;;; Query Result
+  (@interface func (export "__w3_query_result_len")
+    (result $res u64)
+  )
+  ;;; Query Result
+  (@interface func (export "__w3_query_result")
+    (param $ptr s32)
+  )
+
+  ;;; Query Error
+  (@interface func (export "__w3_query_error_len")
+    (result $res u64)
+  )
+  ;;; Query Error
+  (@interface func (export "__w3_query_error")
+    (param $ptr s32)
+  )
+)
