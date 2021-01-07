@@ -69,7 +69,10 @@ TODO: describe how object types are defined
 
 ### **Local Imports**
 
-TODO: describe how to import local files
+GraphQL schemas can import other exports from local files. This can be done using a simple import:
+```graphql
+import { CommonType } from "../imports-local/common.graphql"
+```
 
 Web3API handles a local import in the following way:
 1. Fetch the local file
@@ -80,6 +83,15 @@ Web3API handles a local import in the following way:
 
 ### **External Imports**
 
+GraphQL schemas can also make imports from external files. This can be done using an import with unique namespace:
+
+```graphql
+import { Mutation } into Storage from "storage.web3api.eth"
+
+type Storage_Mutation {
+ ...
+}
+```
 TODO: describe how to import external imports
 
 Web3API handles an external import in the following way:
@@ -109,9 +121,9 @@ Schema lifecycle happens through several Web3API core parts:
 
 ## Web3API (WASM) modules 
 
-TODO: supported languages
+Currently supported languages for writing Web3API WASM modules are:
+ * [AssemblyScript](https://www.assemblyscript.org)
 
-Modules are written in [AssemblyScript](https://www.assemblyscript.org).
 WASM modules are compiled by protocol developer based on package's written AssemblyScript source.
 Web3API WASM modules can be:
 * `mutation` - can perform write operations (but also read operations if needed) on package
