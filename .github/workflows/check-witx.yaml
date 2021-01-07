@@ -1,0 +1,27 @@
+name: Check Witx
+
+on: [push, pull_request]
+
+jobs:
+  Witx:
+    name: "Check Witx"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate markdown
+        uses: NodeFactoryIo/witx-md-generator-action@master
+        with:
+          markdownPath: spec/witx/spec.md
+          witxPath: spec/witx/spec.witx
+
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      - name: Process changes
+        if: steps.changes.outputs.changed == 1
+        run: exit 1
