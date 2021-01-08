@@ -15,7 +15,7 @@ jobs:
       - name: Generate markdown
         uses: NodeFactoryIo/witx-md-generator-action@master
         with:
-          witxPath: spec/witx/
+          witxGlobPath: spec/witx/**/*.witx
 
       - name: Check if there are changes
         id: changes
