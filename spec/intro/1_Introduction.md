@@ -12,7 +12,7 @@ All logic that was once bundled into JavaScript SDKs (among other languages) is 
 Querying these Web3APIs is done through a familiar [GraphQL](https://graphql.org/) interface resulting in a developer experience almost identical to that of a Web2 web service.  
 Instead of sending GraphQL queries to a centralized endpoint, such as `api.service.com`, apps query a decentralized endpoint like `api.protocol.eth`.
 
-The Web3API Client resolves the Web3API package hosted at `api.protocol.eth`, downloads it at runtime (if not present), and executes the application's queries on the WASM modules.
+The Web3API Client resolves the Web3API package hosted at its decentralized endpoint, downloads it at runtime (if not present), and executes the application's queries on the WASM modules.
 
 See [the Architecture section](./2_Architecture.md) for a deep dive.
 
