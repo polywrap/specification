@@ -1,5 +1,5 @@
 # Architecture Overview
-Web3API's high-level architecture, as it pertains to Web3API-enabled applications, is as follows:
+Web3API's high-level architecture (as it pertains to Web3API-enabled applications)
 
 ![Architecture](../assets/Architecture.png)
 
