@@ -6,7 +6,7 @@ Web3API's high-level architecture (as it pertains to Web3API-enabled application
 ## Components
 
 - [Web3API Client](../components/Web3API_Client.md) - Execution Environment  
-- [Web3API URI](../components/Web3API_URI.md) - Universal Identifier  
+- [Web3API URI](../components/Web3API_URI.md) - Uniform Resource Identifier (URI)  
 - [Web3API Package](../components/Web3API_Package.md) - Descriptive & Executable Resources
 - [Web3API Plugins](../components/Web3API_Plugins.md) - Non-WASM Based Web3APIs
 - [Web3API WASM Protocol](../components/Web3API_WASM_Protocol.md) - { Client <> WASM Module } Communication Protocol
@@ -19,13 +19,13 @@ When creating a Web3API Client instance, [additional URI redirects and plugins](
 Web3API Clients provide the recommended [default redirects and plugins](TODO), enabling out of the box usability.  
 
 ### **1: Query an API**  
-Applications can query an API by specifying what API to query using a [Web3API URI](../components/Web3API_URI.md), along with a GraphQL query.
+Applications query an API by specifying the API to query at a [Web3API URI](../components/Web3API_URI.md) and providing a GraphQL query.
 
-URIs can be of any type, as long as there exists a compatible `uri-resolver`. The most common URI types are ENS domains (`w3://ens/domain.eth`) and IPFS hashes (`w3://ipfs/QmHASH`).  
+URIs can be of any type so long as there is a compatible `uri-resolver`. The most common URI types are [Ethereum Name Service (ENS)](https://ens.domains/) domains (example: `w3://ens/domain.eth`) and [InterPlanetary File System (IPFS)](https://ipfs.io/) hashes (example: `w3://ipfs/QmHASH`).  
 
-GraphQL is the default query language of Web3API clients. Other formats can be supported, such as a simple web request format (ex: `w3://ens/api.eth/mutation/method&arg=5`).
+GraphQL is the default query language of Web3API clients. Other formats can be supported, such as a simple web request format (example: `w3://ens/api.eth/mutation/method&arg=5`).
 
-Details on the client's query interface can be found [here](TODO).
+Details on the Web3API client's query interface can be found [here](TODO).
 
 ### **2: Fetch API at URI**  
 
