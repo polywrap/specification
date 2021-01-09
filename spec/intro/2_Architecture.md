@@ -14,7 +14,9 @@ Web3API's high-level architecture (as it pertains to Web3API-enabled application
 ## Step-By-Step Walkthrough
 
 ### **0: Initialize**  
-Firstly, applications must have a [Web3API Client](../components/Web3API_Client.md) bundled within their applications. When creating a Web3API Client instance, you may [provide additional URI redirects and plugins](TODO). Web3API Client's should provide the recommended [default redirects and plugins](TODO), enabling out of the box usability.  
+Applications must first include a [Web3API Client](../components/Web3API_Client.md) library.  
+When creating a Web3API Client instance, [additional URI redirects and plugins](TODO) may be provided.  
+Web3API Clients provide the recommended [default redirects and plugins](TODO), enabling out of the box usability.  
 
 ### **1: Query an API**  
 Applications can query an API by specifying what API to query using a [Web3API URI](../components/Web3API_URI.md), along with a GraphQL query.
