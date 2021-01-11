@@ -19,7 +19,7 @@ When creating a Web3API Client instance, [additional URI redirects and plugins](
 Web3API Clients provide the recommended [default redirects and plugins](TODO), enabling out of the box usability. 
 
 ### **1: Query an API**  
-Applications query an API by specifying the API to query at a [Web3API URI](../components/Web3API_URI.md) and providing a GraphQL query.
+Applications query APIs by specifying the API's [URI](../components/Web3API_URI.md) and providing a GraphQL query.
 
 URIs can be of any type so long as there is a compatible `uri-resolver`. The most common URI types are [Ethereum Name Service (ENS)](https://ens.domains/) domains (example: `w3://ens/domain.eth`) and [InterPlanetary File System (IPFS)](https://ipfs.io/) hashes (example: `w3://ipfs/QmHASH`).  
 
