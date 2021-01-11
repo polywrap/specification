@@ -23,5 +23,5 @@ Web3API empowers Web3 development:
 * **Simple Interface** - With GraphQL, Web3APIs are as easy to use as Web2 web services.
 * **Multi-Platform** - Use Web3 protocols in any programming language by using a Web3API Client.
 * **Automatic Updates** - Resolving packages at runtime allows for automatic (opt-in) updates.
-* **Limitless Composability** - Since Web3APIs are not bundled, there are no limitations on composability.
+* **Limitless Composability** - Since Web3APIs are not bundled, there are no limits to composability.
 * **Extendable Protocols** - Web3APIs can query each other and define standard interfaces, enabling fully extendable protocols.
