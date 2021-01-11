@@ -19,7 +19,7 @@ See [the Architecture section](./2_Architecture.md) for a deep dive.
 ## Impact  
 
 Web3API empowers Web3 development:
-* **Streamlined Integration** - Query any Web3API on-the-fly, by simply providing a URI.
+* **Streamlined Integration** - Query any Web3API on-the-fly, by simply providing its URI (example: `api.protocol.eth`).
 * **Simple Interface** - With GraphQL, Web3APIs are as easy to use as Web2 web services.
 * **Multi-Platform** - Use Web3 protocols in any programming language by using a Web3API Client.
 * **Automatic Updates** - Resolving packages at runtime allows for automatic (opt-in) updates.
