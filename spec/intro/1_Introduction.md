@@ -1,15 +1,15 @@
 # Introduction
 
-[Web3API](https://web3api.dev) brings the ease of [Web2 to Web3](https://ethereum.org/nl/developers/docs/web2-vs-web3/). It aims to make integrating Web3 protocols into applications seamless, without sacrificing decentralization.
+[Web3API](https://web3api.dev) brings the ease of [Web2 to Web3](https://ethereum.org/nl/developers/docs/web2-vs-web3/).  It aims to make integrating Web3 protocols into applications seamless, without sacrificing decentralization.
 
 ## How It Works
 
 > For the visual learners, here is a [video](http://video.web3api.eth.link/).  
 
-Web3API accomplishes this through a WebAssembly (WASM) standard and a developer toolchain that streamlines Web3 protocol integrations. 
+Web3API accomplishes this through a WebAssembly (WASM) standard and a developer toolchain that streamlines Web3 protocol integrations.  
 All logic that was once bundled into JavaScript SDKs (among other languages) is now within lightweight, secure, and portable WASM modules called Web3APIs.
 
-Querying these Web3APIs is done through a familiar [GraphQL](https://graphql.org/) interface resulting in a developer experience almost identical to that of a Web2 web service. 
+Querying these Web3APIs is done through a familiar [GraphQL](https://graphql.org/) interface resulting in a developer experience almost identical to that of a Web2 web service.  
 Instead of sending GraphQL queries to a centralized endpoint, such as `api.service.com`, apps query a decentralized endpoint like `api.protocol.eth`.
 
 The Web3API Client resolves the Web3API package hosted at its decentralized endpoint, downloads it at runtime (if not present), and executes the application's queries on the WASM modules.
