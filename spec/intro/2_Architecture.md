@@ -39,7 +39,7 @@ For example, an ENS domain may resolve to an IPFS hash, which then resolves to a
 
 ### **3: Parse Query & Build Invocations**  
 
-The query provided by the user is parsed using the [parse query algorithm](../components/Web3API_Client.md#algorithms-parse-query). This algorithm outputs one or more [invocation configurations](TODO) that detail the module, method, input arguments, and requested results that will be called by the client.  
+The query provided by the user is parsed using the [parse query algorithm](../components/Web3API_Client.md#algorithms-parse-query). This algorithm outputs one or more [invocation configurations](TODO) that describes the function calls to be perfoemd on the API.  
 
 ### **4: Perform Invocations on API Modules**  
 
