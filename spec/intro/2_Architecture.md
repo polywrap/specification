@@ -29,13 +29,13 @@ Details on the Web3API client's query interface can be found [here](TODO).
 
 ### **2: Fetch API at URI**  
 
-[Web3API URIs](../components/Web3API_URI.md) are resolved based on the [Web3API Client](../components/Web3API_Client.md)'s [resolve-uri algorithm](../components/Web3API_Client.md#algorithms-resolve-uri).  
+[Web3API URIs](../components/Web3API_URI.md) are resolved based on the [Web3API Client](../components/Web3API_Client.md)'s [URI resolution algorithm](../components/Web3API_Client.md#algorithms-resolve-uri).  
 
-In cases where the URI is being redirected to a [plugin](../components/Web3API_Plugins.md), a new plugin instance is instantiated.  
+In cases where the URI is redirected to a [plugin](../components/Web3API_Plugins.md), a new plugin instance is instantiated.  
 
-Otherwise, a [URI resolver](TODO) must be found for the provided [URI authority](TODO). This URI resolver is then used to fetch either another URI, or the [Web3API Package's manifest](TODO). Upon receiving the manifest, we now know that the current URI resolver also implements the [API resolver]() standard interface. Using the API resolver, we are able to fetch the API's schema and WASM modules. We now have enough to instantiate the WASM Web3API instance.  
+In all other cases, a [URI resolver](TODO) must be found for the provided [URI authority](TODO). This resolver is used to fetch another URI or the [Web3API Package's manifest](TODO). By providing the manifest, the current URI resolver demonstrates that it implements the [API resolver]() standard interface. Using this interface, the API's schema and WASM modules can be fetched. This provides enough to instantiate the WASM Web3API instance.  
 
-For example, an ENS domain may resolve to an IPFS hash, which then resolves to a Web3API Package's manifest. For a detailed step by step breakdown of how this works, see the [resolve-uri algorithm specification]((../components/Web3API_Client.md#algorithms-resolve-uri)).  
+For example, an ENS domain may resolve to an IPFS hash, which then resolves to a Web3API Package's manifest. For a detailed step-by-step breakdown of how this works, see the [URI resolution algorithm]((../components/Web3API_Client.md#algorithms-resolve-uri)).  
 
 ### **3: Parse Query & Build Invocations**  
 
