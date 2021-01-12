@@ -47,4 +47,4 @@ Each invocation is performed on the Web3API in question. Within an invocation, o
 
 ### **5: Get Query Result**  
 
-The aggregate result of all invocations will then be returned back to the application, including any errors encountered.  
+An aggregated result of all invocations is returned back to the application, including any errors encountered.  
