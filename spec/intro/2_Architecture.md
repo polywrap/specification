@@ -43,7 +43,7 @@ The query provided by the user is parsed using the [parse query algorithm](../co
 
 ### **4: Perform Invocations on API Modules**  
 
-Each of the query's invocations are then performed on the API in question. Within the invocation, one or more sub-queries may be performed on other Web3APIs.  
+Each invocation is performed on the Web3API in question. Within an invocation, one or more sub-queries may be performed on other Web3APIs.  
 
 ### **5: Get Query Result**  
 
