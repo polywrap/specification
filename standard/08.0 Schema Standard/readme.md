@@ -1,4 +1,4 @@
-# Standard
+# Schema Standard
 
 ## Table of Contents
 

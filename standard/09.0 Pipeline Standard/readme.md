@@ -1,4 +1,4 @@
-# Standard
+# Pipeline Standard
 
 ## Table of Contents
 

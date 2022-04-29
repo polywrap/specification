@@ -1,4 +1,4 @@
-# Standard
+# Security Standard
 
 ## Table of Contents
 

@@ -1,4 +1,4 @@
-# Standard
+# WebAssembly Runtime Standard
 
 ## Table of Contents
 
