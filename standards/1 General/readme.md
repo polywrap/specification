@@ -1,4 +1,5 @@
-# General Standards
+# General Standard
 
 **TOC**
-TODO
+
+* TODO
