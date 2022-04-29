@@ -2,5 +2,5 @@
 
 ## Table of Contents
 
-* [Invocation Standard](Invocation Standard.md)
+* [Invocation Standard](Invocation%20Standard.md)
 
