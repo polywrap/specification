@@ -3,7 +3,7 @@
 ## Overview
 The term "invoke" (or "invocation") refers to the act of executing a method exposed by a wrapper module. This can be done through the client like so:  
 
-```typescript=
+```typescript
 client.invoke({
   uri: "...",
   module: "query",
@@ -19,7 +19,7 @@ The wrapper being invoked could be implemented as a WebAssembly or plugin wrappe
 
 ## Invoke Options
 
-```typescript=
+```typescript
 interface InvokeOptions {
   uri: String;           // wrapper's URI
   module: String;        // wrapper's module
@@ -34,7 +34,7 @@ interface InvokeOptions {
 * [Wrapper Modules](TODO)
 
 ## Invoke Result
-```typescript=
+```typescript
 interface InvokeResult<TData> {
   /**
   * Invoke result data. The type of this value is the return type
