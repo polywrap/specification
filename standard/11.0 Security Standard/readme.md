@@ -2,5 +2,6 @@
 
 ## Table of Contents
 
-* TODO  
+* [01.0 General Standard](/01.0%20General%20Standard)
+
 
