@@ -1,5 +1,0 @@
-# URI Standard
-
-**TOC**
-
-TODO

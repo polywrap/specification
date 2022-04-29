@@ -1,5 +1,0 @@
-# Polywrap Standards  
-
-**TOC**
-
-* TODO
