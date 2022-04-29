@@ -1,4 +1,5 @@
-# Root directory for Polywrap Standards documentation 
+# Polywrap Standards  
 
-## TOC
-TODO
+**TOC**
+
+* TODO
