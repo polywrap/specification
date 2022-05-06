@@ -47,8 +47,6 @@ Building WRAP compatible WebAssembly modules can be broken down into the followi
 4. **Deploy Wrapper**
     When deploying a wrapper, it is up to developers to choose the best solution for their needs. There is no finite set of deployment options, and is left open for developers to choose, thanks to the generic URI & URI resolution standards.
 
-    In an effort to support developers in deploying & discovering new wrappers, the Polywrap DAO is actively building new solutions. One such solution is the Polywrap Registry, which enhances reliability through built-in version verification, and composability through interface implementation registries.
-
     Related Standards: [URI](TODO), [URI Resolution]()
 
 ### Using Wrappers
