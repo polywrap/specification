@@ -55,7 +55,7 @@ Related Standards: [Invocation](TODO)
 
 ### Exposing Application Capabilities
 
-Application developers can choose what host capabilities to wrappers have access to through the use of "plugins". These plugins are written in the language of the application, and run natively within your application memory (unlike WebAssembly which is sandboxed).  
+Application developers can choose what host capabilities the wrappers have access to through the use of "plugins". These plugins are written in the language of the application, and run natively within your application memory (unlike WebAssembly which is sandboxed).  
 
 Related Standards: [Plugins](TODO)  
 
