@@ -9,7 +9,7 @@ WRAP stands for **W**ebAssembly **R**andom **A**ccess **P**rotocol.
 **Random Access** - Any WRAP module is accessible on-demand via its URI.  
 **Protocol** - A set of rules and procedures for loading & executing WRAP modules.  
 
-You can think of WRAP as an interoperability/abstraction standard ontop of WebAssembly.
+You can think of WRAP as an interoperability/abstraction standard on top of WebAssembly.
 
 ## Why Another Standard?
 With "vanilla" WebAssembly, there are a few short-comings that limit its adoption.
