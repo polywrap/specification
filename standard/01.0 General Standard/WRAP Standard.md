@@ -73,3 +73,7 @@ We like to refer to wrappers as "next-gen SDKs". This is because they are better
 **Scalable** - Keep apps lightweight and efficient. Only download what you need, when you need it.  
 **Composable** - Endlessly compose and extend wrappers with imports and standard interfaces.  
 **Upgradable** - Ditch the rebuilds with configurable run-time updates.  
+
+## Feedback
+- remove concept of module + query + mutation
+- input vs args -> args
