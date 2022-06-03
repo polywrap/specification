@@ -23,10 +23,10 @@ With "vanilla" WebAssembly, there are a few short-comings that limit its adoptio
 ### Building Wrappers
 Building WRAP compatible WebAssembly modules can be broken down into the following steps:
 
-1. **Define an Interface**  
-    All WRAP modules have semantic interfaces that describes the module's: methods, custom types, and dependencies.  
+1. **Define a Schema**  
+    All WRAP modules have semantic schemas that describes the module's: methods, custom types, and dependencies.  
 
-    Related Standards: [Interfaces](TODO)
+    Related Standards: [Schemas](TODO)
 
 2. **Generate Bindings**  
     WRAP interfaces are "bound" automatically through codegen to the implementation language of the wrappers. These bindings are used to support the easy development of wrappers by providing:  
