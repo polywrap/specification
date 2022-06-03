@@ -15,7 +15,7 @@ You can think of WRAP as an interoperability/abstraction standard on top of WebA
 With "vanilla" WebAssembly, there are a few short-comings that limit its adoption.
 
 **Composability** - There is not an easy way to create inter-module dependencies, drastically limiting the wasm community's ability to re-use code.  
-**Interfaces** - There is no standard for defining typed interfaces for your wasm modules. This means that vanilla wasm modules are opaque blobs of bytecode, making it hard to integrate them into applications.  
+**Schemas** - There is no standard for defining typed schemas for your wasm modules. This means that vanilla wasm modules are opaque blobs of bytecode, making it hard to integrate them into applications.  
 **Complex Data Passing** - By default vanilla wasm only supports the passing of integers between the host <> wasm boundary, making it difficult to pass complex data structures (ex: struct, array, etc)  into / out of / between wasm modules.  
 **Naming & Addressing** - Just as [any other resource on the web](https://www.w3.org/Addressing/), there needs to be a way to address a wasm module using a tailored URI format.  
 
@@ -29,7 +29,7 @@ Building WRAP compatible WebAssembly modules can be broken down into the followi
     Related Standards: [Schemas](TODO)
 
 2. **Generate Bindings**  
-    WRAP interfaces are "bound" automatically through codegen to the implementation language of the wrappers. These bindings are used to support the easy development of wrappers by providing:  
+    WRAP schemas are "bound" automatically through codegen to the implementation language of the wrappers. These bindings are used to support the easy development of wrappers by providing:  
     - Type Safety  
     - Data Marshalling  
     - Client Interactions  
@@ -61,7 +61,7 @@ Related Standards: [Plugins](TODO)
 
 ### Extending Standard Interfaces
 
-Wrapper interfaces can become standardized, enabling multiple implementations to be used within the same application dynamically. Wrappers can be registered as "implementations" ahead of time, or discovered on-demand at runtime.  
+Wrapper schemas can become standardized, enabling multiple implementations to be used within the same application dynamically. Wrappers can be registered as "implementations" ahead of time, or discovered on-demand at runtime.  
 
 Related Standards: [Standard Interfaces](TODO)  
 
