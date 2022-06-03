@@ -1,5 +1,5 @@
 # URI Standard
-version 1.0
+`version 1.0`
 
 The WRAP URI standard allows developers to reference a wrapper through simple strings, much like referencing a website using an HTTP URI string.
 
