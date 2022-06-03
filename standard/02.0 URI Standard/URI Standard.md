@@ -54,7 +54,7 @@ scheme authority               path
 
 ## FileSystem URI
 ```
-  wrap://fs/~/path/to/wrapper/directory/
+  wrap://file/~/path/to/wrapper/directory/
   \__/  \_/\___________________________/
     |    |            |
 scheme authority    path
