@@ -48,7 +48,7 @@ Related Standards: [URI](TODO), [URI Resolution](TODO)
 
 ### Invoking Wrappers
 
-Integrating wrappers into applications can be done by using any WRAP client. Invocations are made to wrappers by providing the URI, module, and method to be executed.  
+Integrating wrappers into applications can be done by using any WRAP client. Invocations are made to wrappers by providing the wrapper module's URI, and method to be executed.  
 
 Related Standards: [Invocation](TODO)  
 
@@ -73,7 +73,3 @@ We like to refer to wrappers as "next-gen SDKs". This is because they are better
 **Scalable** - Keep apps lightweight and efficient. Only download what you need, when you need it.  
 **Composable** - Endlessly compose and extend wrappers with imports and standard interfaces.  
 **Upgradable** - Ditch the rebuilds with configurable run-time updates.  
-
-## Feedback
-- remove concept of module + query + mutation
-- input vs args -> args
