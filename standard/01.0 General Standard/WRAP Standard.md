@@ -49,7 +49,7 @@ Related Standards: [URI](TODO), [URI Resolution](TODO)
 
 ### Invoking Wrappers
 
-Integrating wrappers into applications can be done by using any WRAP client. Invocations are made to wrappers by providing the wrapper module's URI, and method to be executed.  
+Integrating wrappers into applications can be done by using any WRAP client. Invocations are made to wrappers by providing the wrapper's URI, and method to be executed.  
 
 Related Standards: [Invocation](TODO)  
 
