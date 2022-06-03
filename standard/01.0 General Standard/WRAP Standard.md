@@ -1,4 +1,5 @@
 # The WRAP Standard
+`version 1.0`
 
 At the core of Polywrap is The WRAP Standard. This standard enables SDK developers to create highly-composable modules, and application developers the ability to integrate them with a single line of code.  
 
