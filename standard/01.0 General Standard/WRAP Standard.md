@@ -1,7 +1,7 @@
 # The WRAP Standard
 `version 1.0`
 
-At the core of Polywrap is The WRAP Standard. This standard enables SDK developers to create highly-composable modules and application developers to integrate them with a single line of code.  
+At the core of [Polywrap](https://polywrap.io/) is The WRAP Standard. This standard enables SDK developers to create highly-composable modules and application developers to integrate them with a single line of code.  
 
 WRAP stands for **W**ebAssembly **R**andom **A**ccess **P**rotocol.  
 
