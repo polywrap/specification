@@ -1,5 +1,5 @@
 # Invocation Standard
-`version 1.0`
+`version 1.0` `APPROVED`
 
 ## Overview
 The term "invoke" (or "invocation") refers to the act of executing a method exposed by a wrapper module. This can be done by using a client library that supports the [WRAP Standard](../01.0%20General%20Standard/WRAP%20Standard.md?plain=1) like so:
