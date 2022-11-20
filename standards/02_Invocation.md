@@ -1,8 +1,8 @@
 # Invocation Standard
-`version 1.0` `APPROVED`
+`version 1.0` [`APPROVED`](https://forum.polywrap.io/t/technical-council-standard-acceptance-invocation-standard/305)
 
 ## Overview
-The term "invoke" (or "invocation") refers to the act of executing a method exposed by a wrapper module. This can be done by using a client library that supports the [WRAP Standard](../01.0%20General%20Standard/WRAP%20Standard.md?plain=1) like so:
+The term "invoke" (or "invocation") refers to the act of executing a method exposed by a wrapper module. This can be done by using a client library that supports the [WRAP Standard](./00_WRAP.md) like so:
 
 ```typescript
 client.invoke({
@@ -62,7 +62,7 @@ interface InvokeOptions {
 ```
 
 **Related Standards**
-* [URI](TODO)
+* [URI](./01_URI.md)
 * [URI Resolution](TODO)
 * [Modules](TODO)
 
